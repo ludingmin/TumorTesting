@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "tumortest.alioss",
+      "type": "com.tumorTest.properties.AliOssProperties",
+      "sourceType": "com.tumorTest.properties.AliOssProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "tumortest.alioss.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.tumorTest.properties.AliOssProperties"
+    },
+    {
+      "name": "tumortest.alioss.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.tumorTest.properties.AliOssProperties"
+    },
+    {
+      "name": "tumortest.alioss.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.tumorTest.properties.AliOssProperties"
+    },
+    {
+      "name": "tumortest.alioss.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.tumorTest.properties.AliOssProperties"
+    }
+  ],
+  "hints": []
+}

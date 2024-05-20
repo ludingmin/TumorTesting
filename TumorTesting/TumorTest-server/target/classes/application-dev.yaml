@@ -1,0 +1,14 @@
+tumortest:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: tumor
+    username: root
+    password: 123456
+
+  alioss:
+    endPoint: oss-rg-china-mainland.aliyuncs.com
+    accessKeyId:  LTAI5tSjSyj82eLENwsMWTSC
+    accessKeySecret:  EM9z8wge8QjILpfjzITRiCqFZN8b1N
+    bucketName: tumor-pictrue
