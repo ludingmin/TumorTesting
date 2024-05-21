@@ -3,7 +3,7 @@ package com.tumorTest.controller;
 
 import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.api.R;
+
 import com.tumorTest.constant.JwtClaimsConstant;
 import com.tumorTest.dto.LoginDto;
 import com.tumorTest.entity.User;
@@ -14,6 +14,7 @@ import com.tumorTest.service.UserService;
 import com.tumorTest.uitl.JwtUtil;
 import com.tumorTest.vo.LoginVo;
 import com.tumorTest.vo.UserVo;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class AdminController {
     RedisTemplate<String,Object> redisTemplate;
 
     @PostMapping("/login/user")
+    @ApiOperation("用户登录接口")
     public Result<UserVo> login(LoginDto loginDto){
 
         log.info("用户{}登录",loginDto);

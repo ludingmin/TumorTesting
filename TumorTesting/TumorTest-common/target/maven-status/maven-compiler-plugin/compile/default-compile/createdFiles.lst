@@ -1,0 +1,7 @@
+com\tumorTest\uitl\HttpClientUtil.class
+com\tumorTest\result\PageResult.class
+com\tumorTest\result\Result.class
+com\tumorTest\uitl\AliOssUtil.class
+com\tumorTest\uitl\JwtUtil.class
+com\tumorTest\properties\AliOssProperties.class
+META-INF\spring-configuration-metadata.json
