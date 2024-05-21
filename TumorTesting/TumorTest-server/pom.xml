@@ -139,9 +139,6 @@
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-        <!--        导入其他模块-->
-
-
     </dependencies>
 
     <build>

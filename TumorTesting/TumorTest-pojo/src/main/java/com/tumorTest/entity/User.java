@@ -14,17 +14,15 @@ import lombok.Data;
 public class User {
 
     @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+    private Long id;
     private  String name;
     private String number;
     private String password;
     private Integer age;
-    private String province;
-    private String county;
-    private String town;
-    private String village;
     private String address;
     private String postcode;
+    //0代表用户||1代表医生
+    private Integer type;
 
 
 }
