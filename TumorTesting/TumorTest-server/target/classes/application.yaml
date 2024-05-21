@@ -12,6 +12,9 @@ spring:
       url: jdbc:mysql://${tumortest.datasource.host}:${tumortest.datasource.port}/${tumortest.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: ${tumortest.datasource.username}
       password: ${tumortest.datasource.password}
+  redis:
+    host: ${tumortest.redis.host}
+    port: ${tumortest.redis.prot}
 
 mybatis:
   #mapper配置文件
@@ -37,5 +40,6 @@ tumortest:
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+
 
 

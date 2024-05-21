@@ -12,3 +12,7 @@ tumortest:
     accessKeyId:  LTAI5tSjSyj82eLENwsMWTSC
     accessKeySecret:  EM9z8wge8QjILpfjzITRiCqFZN8b1N
     bucketName: tumor-pictrue
+
+  redis:
+    host: 192.168.171.128
+    prot: 6379
