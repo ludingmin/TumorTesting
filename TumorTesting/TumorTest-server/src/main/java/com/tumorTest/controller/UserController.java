@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -58,7 +59,7 @@ public class UserController {
 
     @PostMapping("/create")
     @ApiOperation("创建用户接口")
-    public Result createUser(CreateUseDto createUseDto){
+    public Result createUser(@RequestBody CreateUseDto createUseDto){
         log.info("创建用户:{}",createUseDto);
         return userService.createUser(createUseDto);
     }
