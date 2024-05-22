@@ -6,16 +6,19 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 //预约信息表
 @Data
 public class Booking {
     @TableId(value = "booking_id",type = IdType.AUTO)
     private Integer bookingId;
-    private Integer id;
-    private Integer doctorId;
+    private String name;
+    private String doctorName;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Data data;
+    private LocalDateTime date;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Data time;
+    private LocalDateTime time;
     private Integer state;
 }

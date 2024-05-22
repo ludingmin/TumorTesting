@@ -1,11 +1,14 @@
 package com.tumorTest.handler;
 
 
+import com.tumorTest.dto.UserDto;
 import com.tumorTest.excption.BaseException;
 import com.tumorTest.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * 全局异常处理器，处理项目中抛出的业务异常
@@ -24,5 +27,14 @@ public class GlobalExceptionHandler {
         log.error("异常信息：{}", ex.getMessage());
         return Result.error(ex.getMessage());
     }
+
+    @ExceptionHandler
+    public Result SQLexceptionHander(SQLIntegrityConstraintViolationException ex){
+        String errMsg = ex.getMessage();
+        if (errMsg.contains("Duplicate entry"))
+            return Result.error("该用户名已经存在");
+        return Result.error("未知sql错误");
+    }
+
 
 }

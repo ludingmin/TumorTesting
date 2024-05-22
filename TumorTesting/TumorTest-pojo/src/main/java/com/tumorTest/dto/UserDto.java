@@ -12,4 +12,5 @@ public class UserDto {
     public String name;
     public String number;
     public Integer age;
+    public Integer Type;
 }

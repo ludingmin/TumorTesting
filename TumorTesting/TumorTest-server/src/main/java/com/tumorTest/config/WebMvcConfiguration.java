@@ -1,7 +1,9 @@
 package com.tumorTest.config;
 
 
-import com.tumorTest.interceptor.JwtTokenAdminInterceptor;
+
+import com.tumorTest.interceptor.RefreshTokenInterceptor;
+import com.tumorTest.interceptor.TokenInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,19 +25,27 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Slf4j
 public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
-    @Autowired
-    private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
 
+    @Autowired
+    RefreshTokenInterceptor refreshTokenInterceptor;
+    @Autowired
+    TokenInterceptor tokenInterceptor;
     /**
      * 注册自定义拦截器
      *
      * @param registry
      */
     protected void addInterceptors(InterceptorRegistry registry) {
-        log.info("开始注册自定义拦截器...");
-        registry.addInterceptor(jwtTokenAdminInterceptor)
-                .addPathPatterns("/admin/**")
-                .excludePathPatterns("/admin/employee/login");
+
+        registry.addInterceptor(refreshTokenInterceptor)
+                .addPathPatterns("/**");
+        registry.addInterceptor(tokenInterceptor)
+                .addPathPatterns("/user/**")
+                .addPathPatterns("/doctor/**")
+                .excludePathPatterns("/user/login")
+                .excludePathPatterns("/user/create")
+                .excludePathPatterns("/doctor/create");
+
     }
 
     /**
@@ -45,14 +55,14 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     @Bean
     public Docket docket() {
         ApiInfo apiInfo = new ApiInfoBuilder()
-                .title("苍穹外卖项目接口文档")
+                .title("肿瘤检测接口文档")
                 .version("2.0")
-                .description("苍穹外卖项目接口文档")
+                .description("肿瘤接口检测")
                 .build();
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.sky.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.tumorTest.controller"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
