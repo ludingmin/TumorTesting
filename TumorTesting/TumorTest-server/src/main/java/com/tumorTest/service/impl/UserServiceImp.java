@@ -1,6 +1,7 @@
 package com.tumorTest.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.crypto.digest.MD5;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.tumorTest.constant.CommonUtil;
@@ -40,7 +41,8 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
 
         // 根据DTO查询数据库
         User user = userMapper.selectOne(new QueryWrapper<User>().eq("name", loginDto.getUsername()));
-        if (!(user.getPassword().equals(loginDto.getPassword()) && user.getType()==0)) {
+        String md5Password = MD5.create().digestHex(loginDto.getPassword());
+        if (!(user.getPassword().equals(md5Password) && user.getType()==0)) {
             throw new LoginException("登录错误!");
         }
 
@@ -54,8 +56,6 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
         redisTemplate.expire(RedisConstant.USER_TOKEN+token,RedisConstant.TOKEN_TIME, TimeUnit.MINUTES);
         //TODO 后面防止登录攻击，可以在存token的时候，存多一个key为UserID，value为token的值。
         // 每次执行登录接口去查一下是否存在UserID。如果存在根据返回token。并续期
-
-
 
         // 返回结果
         // 设置VO属性
@@ -75,11 +75,14 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
         }
         //用户名的长度不能少于3，大于8
         int length = createUseDto.getName().length();
-        if (length>3 && length<8 )
+        if (!(length>3 && length<8 ))
             throw new FormatException();
+
+        String md5Password = MD5.create().digestHex(createUseDto.getPassword());
 
         User user = BeanUtil.copyProperties(createUseDto, User.class);
         user.setType(0);
+        user.setPassword(md5Password);
         int i = userMapper.insert(user);
         if (i==0)
             throw new CreateUserExcption();

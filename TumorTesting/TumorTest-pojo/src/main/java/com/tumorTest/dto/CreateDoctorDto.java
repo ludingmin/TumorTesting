@@ -6,9 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -26,9 +28,6 @@ public class CreateDoctorDto {
 
     private String address;
 
-
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDateTime onboardingTime;
 
     private String jobtitle;
 
