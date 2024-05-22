@@ -1,5 +1,4 @@
-package com.tumorTest.entity;
-
+package com.tumorTest.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,15 +10,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
-
-//医生
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Doctor {
+public class CreateDoctorDto {
 
-    private Long doctorId;
+    private String name;
+
+    private String number;
+
+    private String password;
+
+    private Integer age;
+
+    private String address;
+
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDateTime onboardingTime;

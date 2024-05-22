@@ -3,12 +3,14 @@ package com.tumorTest.interceptor;
 import cn.hutool.core.bean.BeanUtil;
 import com.tumorTest.context.BaseContext;
 import com.tumorTest.dto.UserDto;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+@Component
 public class TokenInterceptor implements HandlerInterceptor {
 
     /*

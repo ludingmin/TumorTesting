@@ -52,7 +52,7 @@ public class RefreshTokenInterceptor implements HandlerInterceptor {
         //2、校验令牌
         try {
             // user：token：+  获取缓存，如果没有抛个异常
-            Map<Object, Object> entries = redisTemplate.opsForHash().entries(RedisConstant.USER_TOKEN);
+            Map<Object, Object> entries = redisTemplate.opsForHash().entries(RedisConstant.USER_TOKEN+token);
             if (entries.isEmpty() || entries == null) {
                 return true;
             }
