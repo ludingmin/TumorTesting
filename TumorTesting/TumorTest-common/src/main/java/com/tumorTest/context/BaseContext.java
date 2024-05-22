@@ -1,14 +1,16 @@
 package com.tumorTest.context;
 
+import com.tumorTest.dto.UserDto;
+
 public class BaseContext {
 
-    public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
+    public static ThreadLocal<UserDto> threadLocal = new ThreadLocal<>();
 
-    public static void setCurrentId(Long id) {
-        threadLocal.set(id);
+    public static void setUser(UserDto userDto) {
+        threadLocal.set(userDto);
     }
 
-    public static Long getCurrentId() {
+    public static UserDto getUser() {
         return threadLocal.get();
     }
 

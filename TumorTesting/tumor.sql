@@ -1,111 +1,170 @@
-/*
- Navicat Premium Data Transfer
+CREATE DATABASE  IF NOT EXISTS `tumor` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `tumor`;
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+--
+-- Host: localhost    Database: tumor
+-- ------------------------------------------------------
+-- Server version	5.7.41-log
 
- Source Server         : 本机
- Source Server Type    : MySQL
- Source Server Version : 50741 (5.7.41-log)
- Source Host           : localhost:3306
- Source Schema         : tumor
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MySQL
- Target Server Version : 50741 (5.7.41-log)
- File Encoding         : 65001
+--
+-- Table structure for table `booking`
+--
 
- Date: 20/05/2024 22:45:25
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for booking
--- ----------------------------
 DROP TABLE IF EXISTS `booking`;
-CREATE TABLE `booking`  (
-  `id` int(11) NOT NULL,
-  `doctor_id` int(11) NOT NULL,
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `booking` (
+  `doctor_name` int(11) NOT NULL,
   `date` date NOT NULL,
   `time` datetime NOT NULL,
   `state` int(11) NOT NULL,
   `booking_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
   PRIMARY KEY (`booking_id`) USING BTREE,
-  UNIQUE INDEX `booking_id_UNIQUE`(`booking_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  UNIQUE KEY `booking_id_UNIQUE` (`booking_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of booking
--- ----------------------------
+--
+-- Dumping data for table `booking`
+--
 
--- ----------------------------
--- Table structure for consultation
--- ----------------------------
+LOCK TABLES `booking` WRITE;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `consultation`
+--
+
 DROP TABLE IF EXISTS `consultation`;
-CREATE TABLE `consultation`  (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `consultation` (
   `consultation_id` int(11) NOT NULL AUTO_INCREMENT,
   `booking_id` int(11) NOT NULL,
   `diagnostic_status` int(11) NOT NULL,
-  `content` varchar(300) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `creation_timel` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `content` varchar(300) COLLATE utf8_bin NOT NULL,
+  `creation_timel` varchar(45) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`consultation_id`) USING BTREE,
-  UNIQUE INDEX `consultation_id_UNIQUE`(`consultation_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  UNIQUE KEY `consultation_id_UNIQUE` (`consultation_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of consultation
--- ----------------------------
+--
+-- Dumping data for table `consultation`
+--
 
--- ----------------------------
--- Table structure for doctor
--- ----------------------------
+LOCK TABLES `consultation` WRITE;
+/*!40000 ALTER TABLE `consultation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `consultation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `doctor`
+--
+
 DROP TABLE IF EXISTS `doctor`;
-CREATE TABLE `doctor`  (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `doctor` (
   `doctor_id` int(11) NOT NULL AUTO_INCREMENT,
   `onboarding_time` date NOT NULL,
-  `jobtitle` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `jobtitle` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `doctor_name` varchar(45) NOT NULL,
   PRIMARY KEY (`doctor_id`) USING BTREE,
-  UNIQUE INDEX `doctor_id_UNIQUE`(`doctor_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  UNIQUE KEY `doctor_id_UNIQUE` (`doctor_id`) USING BTREE,
+  UNIQUE KEY `doctor_name_UNIQUE` (`doctor_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of doctor
--- ----------------------------
+--
+-- Dumping data for table `doctor`
+--
 
--- ----------------------------
--- Table structure for patient
--- ----------------------------
+LOCK TABLES `doctor` WRITE;
+/*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `patient`
+--
+
 DROP TABLE IF EXISTS `patient`;
-CREATE TABLE `patient`  (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `patient` (
   `id` int(11) NOT NULL,
-  `cases` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  `cases` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of patient
--- ----------------------------
+--
+-- Dumping data for table `patient`
+--
 
--- ----------------------------
--- Table structure for user
--- ----------------------------
+LOCK TABLES `patient` WRITE;
+/*!40000 ALTER TABLE `patient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`  (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
   `id` int(4) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  `name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '用户名',
-  `number` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '号码',
-  `password` varchar(16) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '密码',
+  `name` varchar(30) CHARACTER SET latin1 NOT NULL COMMENT '用户名',
+  `number` varchar(30) CHARACTER SET latin1 NOT NULL COMMENT '号码',
+  `password` varchar(16) CHARACTER SET latin1 NOT NULL COMMENT '密码',
   `age` int(4) NOT NULL COMMENT '年龄',
-  `province` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '省份',
-  `city` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '市',
-  `county` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '县',
-  `town` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '镇',
-  `village` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '村',
-  `address` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '详细地址',
-  `postcode` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '邮政编码',
+  `province` varchar(50) CHARACTER SET latin1 DEFAULT NULL COMMENT '省份',
+  `city` varchar(50) CHARACTER SET latin1 DEFAULT NULL COMMENT '市',
+  `county` varchar(50) CHARACTER SET latin1 DEFAULT NULL COMMENT '县',
+  `town` varchar(50) CHARACTER SET latin1 DEFAULT NULL COMMENT '镇',
+  `village` varchar(50) CHARACTER SET latin1 DEFAULT NULL COMMENT '村',
+  `address` varchar(255) DEFAULT NULL COMMENT '详细地址',
+  `postcode` varchar(100) CHARACTER SET latin1 DEFAULT NULL COMMENT '邮政编码',
+  `type` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `id_UNIQUE`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  UNIQUE KEY `id_UNIQUE` (`id`) USING BTREE,
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=100105 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of user
--- ----------------------------
+--
+-- Dumping data for table `user`
+--
 
-SET FOREIGN_KEY_CHECKS = 1;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (100101,'zhangsan','13924175649','123456',15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(100102,'lisi','13928791132','123456',15,NULL,NULL,NULL,NULL,NULL,'asdas','511487',NULL),(100104,'lisi8','13928791132','123456',15,NULL,NULL,NULL,NULL,NULL,'随便','511487',NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-05-22 18:48:03
