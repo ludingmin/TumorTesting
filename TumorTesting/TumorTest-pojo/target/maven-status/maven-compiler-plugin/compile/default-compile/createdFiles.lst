@@ -1,0 +1,7 @@
+com\tumorTest\entity\Booking.class
+com\tumorTest\entity\Doctor.class
+com\tumorTest\entity\Consultation.class
+com\tumorTest\dto\LoginDto.class
+com\tumorTest\vo\UserVo.class
+com\tumorTest\entity\Patient.class
+com\tumorTest\entity\User.class
