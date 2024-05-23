@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -17,7 +18,7 @@ public class Booking {
     private String name;
     private String doctorName;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDateTime date;
+    private LocalDate date;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
     private Integer state;

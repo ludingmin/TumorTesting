@@ -14,7 +14,7 @@ import com.tumorTest.mapper.UserMapper;
 import com.tumorTest.result.Result;
 import com.tumorTest.service.DoctorService;
 import com.tumorTest.service.UserService;
-import org.joda.time.DateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
