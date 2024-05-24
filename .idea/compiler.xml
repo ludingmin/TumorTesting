@@ -11,7 +11,7 @@
         <module name="TumorTest-common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="18">
       <module name="TumorTest-common" target="1.8" />
       <module name="TumorTest-pojo" target="1.8" />
       <module name="TumorTest-server" target="1.8" />
