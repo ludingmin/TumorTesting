@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TumorTesting/TumorTest-common/TumorTest-common.iml" filepath="$PROJECT_DIR$/TumorTesting/TumorTest-common/TumorTest-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TumorTesting/TumorTest-pojo/TumorTest-pojo.iml" filepath="$PROJECT_DIR$/TumorTesting/TumorTest-pojo/TumorTest-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TumorTesting/TumorTest-server/TumorTest-server.iml" filepath="$PROJECT_DIR$/TumorTesting/TumorTest-server/TumorTest-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TumorTesting/TumorTesting.iml" filepath="$PROJECT_DIR$/TumorTesting/TumorTesting.iml" />
+    </modules>
+  </component>
+</project>
