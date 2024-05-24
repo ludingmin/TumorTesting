@@ -52,7 +52,7 @@ public class UserController {
 
     @PostMapping("/login")
     @ApiOperation("用户登录接口")
-    public Result<UserVo> login(LoginDto loginDto){
+    public Result<UserVo> login(@RequestBody LoginDto loginDto){
 
         log.info("用户登录:{}",loginDto);
         return userService.userLogin(loginDto);
