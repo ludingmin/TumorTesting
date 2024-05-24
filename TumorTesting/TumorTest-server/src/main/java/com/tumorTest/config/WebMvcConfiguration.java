@@ -42,9 +42,11 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         registry.addInterceptor(tokenInterceptor)
                 .addPathPatterns("/user/**")
                 .addPathPatterns("/doctor/**")
+//                .addPathPatterns("/file/**")
                 .excludePathPatterns("/user/login")
                 .excludePathPatterns("/user/create")
                 .excludePathPatterns("/doctor/create");
+//                .excludePathPatterns("/file/reload");
 
     }
 

@@ -2,8 +2,6 @@ package com.tumorTest;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import cn.hutool.crypto.digest.MD5;
-import com.tumorTest.constant.CommonUtil;
 import com.tumorTest.dto.CreateUseDto;
 import com.tumorTest.dto.LoginDto;
 import com.tumorTest.dto.UserDto;
@@ -47,7 +45,8 @@ public class Test {
 
     @org.junit.Test
     public void test2(){
-        System.out.println(MD5.create().digestHex("123456"));
+        CreateUseDto createUseDto = new CreateUseDto("lisi8", "13928791132", "123456", 15, "随便", "511487");
+        System.out.println(userService.createUser(createUseDto));
 
     }
 

@@ -4,6 +4,7 @@ package com.tumorTest.controller;
 import com.tumorTest.dto.CreateDoctorDto;
 import com.tumorTest.result.Result;
 import com.tumorTest.service.DoctorService;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/doctor")
+@Api(tags = "医生相关接口")
 @Slf4j
 public class DoctorController {
     @Autowired

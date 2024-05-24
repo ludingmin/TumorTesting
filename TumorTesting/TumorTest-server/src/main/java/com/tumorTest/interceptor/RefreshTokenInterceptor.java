@@ -42,6 +42,18 @@ public class RefreshTokenInterceptor implements HandlerInterceptor {
      * @throws Exception
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //对swagger访问路径放行
+        String requestURI = request.getRequestURI();
+        // 指定需要放行的路径
+        String[] allowedPaths = new String[]{"/doc.html","/webjars/**","/swagger-resources", "/v2/api-docs"};
+
+        for (String allowedPath : allowedPaths) {
+            if (requestURI.startsWith(allowedPath)) {
+                return true; // 放行
+            }
+        }
+
+
         //判断当前拦截到的是Controller的方法还是其他资源
         if (!(handler instanceof HandlerMethod)) {
             //当前拦截到的不是动态方法，直接放行

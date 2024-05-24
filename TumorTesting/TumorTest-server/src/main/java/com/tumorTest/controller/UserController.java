@@ -18,6 +18,7 @@ import com.tumorTest.service.UserService;
 import com.tumorTest.uitl.JwtUtil;
 import com.tumorTest.vo.LoginVo;
 import com.tumorTest.vo.UserVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -36,6 +37,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
+@Api(tags = "用户相关接口")
 @Slf4j
 public class UserController {
 
@@ -52,7 +54,7 @@ public class UserController {
     @ApiOperation("用户登录接口")
     public Result<UserVo> login(LoginDto loginDto){
 
-        log.info("用户{}登录",loginDto);
+        log.info("用户登录:{}",loginDto);
         return userService.userLogin(loginDto);
 
     }
