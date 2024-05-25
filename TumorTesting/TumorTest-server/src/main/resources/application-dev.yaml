@@ -9,8 +9,10 @@ tumortest:
 
   alioss:
     endPoint: oss-rg-china-mainland.aliyuncs.com
-    accessKeyId:  LTAI5t7ugDmg5aAZwGK4agR5
-    accessKeySecret:  mRgyJGHvupgAltu5RL8d93SEyfh5M3
+    accessKeyId:
+    #LTAI5t7ugDmg5aAZwGK4agR5
+    accessKeySecret:
+    #mRgyJGHvupgAltu5RL8d93SEyfh5M3
     bucketName: tumor-pictrue
 
   redis:
