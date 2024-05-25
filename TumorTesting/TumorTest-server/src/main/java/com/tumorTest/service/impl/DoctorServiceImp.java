@@ -4,7 +4,7 @@ package com.tumorTest.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.digest.MD5;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.tumorTest.constant.CommonUtil;
+import com.tumorTest.uitl.CommonUtil;
 import com.tumorTest.dto.CreateDoctorDto;
 import com.tumorTest.entity.Doctor;
 import com.tumorTest.entity.User;
@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service

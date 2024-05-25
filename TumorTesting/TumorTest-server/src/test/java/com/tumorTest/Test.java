@@ -1,10 +1,7 @@
 package com.tumorTest;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.crypto.digest.MD5;
-import com.tumorTest.constant.CommonUtil;
-import com.tumorTest.dto.CreateUseDto;
 import com.tumorTest.dto.LoginDto;
 import com.tumorTest.dto.UserDto;
 import com.tumorTest.mapper.UserMapper;
@@ -57,8 +54,8 @@ public class Test {
     public void test3() {
         try {
             // 创建 ProcessBuilder 对象，指定要执行的命令（Python 解释器路径和要执行的 Python 文件路径）
-            ProcessBuilder pb = new ProcessBuilder(
-                    "C://Users/DELL/Desktop/model/start.cmd");
+            ProcessBuilder pb = new ProcessBuilder("python",
+                    "C://Users//Administrator//Desktop//Tumor//TumorTesting//model//start.py");
 
             // 启动进程
             Process process = pb.start();
