@@ -19,6 +19,7 @@ import com.tumorTest.mapper.UserMapper;
 import com.tumorTest.result.Result;
 import com.tumorTest.service.UserService;
 import com.tumorTest.vo.UserVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -93,14 +94,23 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
 
     /**
      * 用户根据预约信息查询结果
-     *
-     * @param booking 预约的所有信息
+     * @param booking 预约的信息
      */
-
     public ShowBookingResultDto selectBooking(Booking booking) {
         ShowBookingResultDto byBookingId = userMapper.getByBookingId(booking.getBookingId());
         byBookingId.setImgUrl(booking.getImgUrl());
         return byBookingId;
+    }
+
+    /**
+     * 用户根据userId查询个人信息
+     * @param userId 用户的id
+     * @return
+     */
+    @Override
+    public User findPersonalInformation(@Param("userId") Integer userId) {
+        User personalInformationByUserId = userMapper.getPersonalInformationByUserId(userId);
+        return personalInformationByUserId;
     }
 
 

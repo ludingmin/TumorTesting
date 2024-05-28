@@ -28,10 +28,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -45,8 +42,6 @@ import java.util.UUID;
 public class UserController {
 
 
-    @Autowired
-    UserMapper userMapper;
 
     @Autowired
     UserService userService;
@@ -79,8 +74,15 @@ public class UserController {
         return Result.error("你未曾登录!");
     }
 
+    @PostMapping("/findPersonalInformation")
+    @ApiOperation("用户查询个人信息")
+    public Result findPersonalInformation(@Param("userId") Integer userId){
+        User personalInformation = userService.findPersonalInformation(userId);
+        return Result.success(personalInformation);
+    }
+
     @PostMapping("/selectByBooking")
-    @ApiOperation("用户查询自己的预约")
+    @ApiOperation("用户查询自己的预约结果")
     public Result findUserBooking(@RequestBody Booking booking){
         ShowBookingResultDto showBookingResultDto = userService.selectBooking(booking);
         return Result.success(showBookingResultDto);

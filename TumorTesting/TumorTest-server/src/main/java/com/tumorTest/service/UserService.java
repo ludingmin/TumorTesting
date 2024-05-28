@@ -19,4 +19,6 @@ public interface UserService extends IService<User> {
     Result  createUser(CreateUseDto createUseDto);
 
     ShowBookingResultDto selectBooking(Booking booking);
+
+    User findPersonalInformation(Integer userId);
 }

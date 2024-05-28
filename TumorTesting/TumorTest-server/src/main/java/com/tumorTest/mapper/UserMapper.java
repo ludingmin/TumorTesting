@@ -20,4 +20,11 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("select * from consultation where booking_id = #{bookingId}")
     ShowBookingResultDto getByBookingId(Integer bookingId);
 
+    /**
+     * 根据用户id查询个人信息
+     * @param userId
+     * @return
+     */
+    @Select("select * from user where id = #{userId}")
+    User getPersonalInformationByUserId(Integer userId);
 }
