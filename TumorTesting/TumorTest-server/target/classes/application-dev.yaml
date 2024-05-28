@@ -8,13 +8,13 @@ tumortest:
     password: 123456
 
   alioss:
-    endPoint: oss-rg-china-mainland.aliyuncs.com
-    accessKeyId:  LTAI5t7ugDmg5aAZwGK4agR5
-    accessKeySecret:  mRgyJGHvupgAltu5RL8d93SEyfh5M3
-    bucketName: tumor-pictrue
+    #endPoint: #oss-rg-china-mainland.aliyuncs.com
+    #accessKeyId:  #LTAI5t7ugDmg5aAZwGK4agR5
+    #accessKeySecret:  #mRgyJGHvupgAltu5RL8d93SEyfh5M3
+    #bucketName: #tumor-pictrue
 
   redis:
-    host: 192.168.189.128
+    host: localhost
     prot: 6379
 
   python:

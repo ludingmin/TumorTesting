@@ -32,6 +32,8 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
 
 
 
+
+
     //设置每天最大的预约人数
     public  static Integer total=50;
 
@@ -64,23 +66,18 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
         System.out.println(format);
         System.out.println(format1);
 
-        //日期
-        LocalDate date1 = LocalDate.parse(format, formatter);
-        //时间
+        //下单时间
         LocalDateTime date2 = LocalDateTime.parse(format1, formatter1);
 
         //封装到类中
-        booking.setDate(date1);
         booking.setTime(date2);
         booking.setState(1);
 
         //获取用户名以及日期
-        String name = booking.getName();
-        LocalDate date = booking.getDate();
+        Integer userId = booking.getUserId();
 
         //查询今日是否已预约
-        String b = (String) redisTemplate.opsForValue().get(name+format);
-//        System.out.println(b);
+        String b = (String) redisTemplate.opsForValue().get(userId+format);
 
         if ( "ture".equals(b))
             return Result.success("预约失败");
@@ -93,10 +90,10 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
         total1--;
         //缓存
         redisTemplate.opsForValue().set("total",total1);
-        String name1 = booking.getName();
+
         //将已预约的用户添加到redis,设置key的存活时间
-        redisTemplate.opsForValue().set(name1+format,"ture");
-        redisTemplate.expire(name1+format,24, TimeUnit.HOURS);
+        redisTemplate.opsForValue().set(userId+format,"ture");
+        redisTemplate.expire(userId+format,24, TimeUnit.HOURS);
         return Result.success("创建成功");
     }
 
