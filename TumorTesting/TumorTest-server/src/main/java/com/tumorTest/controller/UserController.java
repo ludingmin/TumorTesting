@@ -9,7 +9,9 @@ import com.tumorTest.constant.RedisConstant;
 import com.tumorTest.context.BaseContext;
 import com.tumorTest.dto.CreateUseDto;
 import com.tumorTest.dto.LoginDto;
+import com.tumorTest.dto.ShowBookingResultDto;
 import com.tumorTest.dto.UserDto;
+import com.tumorTest.entity.Booking;
 import com.tumorTest.entity.User;
 import com.tumorTest.mapper.UserMapper;
 import com.tumorTest.properties.JwtProperties;
@@ -21,6 +23,7 @@ import com.tumorTest.vo.UserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -74,6 +77,13 @@ public class UserController {
         if (delete)
             return Result.success("退出成功!");
         return Result.error("你未曾登录!");
+    }
+
+    @PostMapping("/selectByBooking")
+    @ApiOperation("用户查询自己的预约")
+    public Result findUserBooking(@RequestBody Booking booking){
+        ShowBookingResultDto showBookingResultDto = userService.selectBooking(booking);
+        return Result.success(showBookingResultDto);
     }
 
 

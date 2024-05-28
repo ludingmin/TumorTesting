@@ -4,6 +4,8 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.digest.MD5;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.tumorTest.dto.ShowBookingResultDto;
+import com.tumorTest.entity.Booking;
 import com.tumorTest.uitl.CommonUtil;
 import com.tumorTest.constant.RedisConstant;
 import com.tumorTest.dto.CreateUseDto;
@@ -89,6 +91,17 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
 
     }
 
+    /**
+     * 用户根据预约信息查询结果
+     *
+     * @param booking 预约的所有信息
+     */
+
+    public ShowBookingResultDto selectBooking(Booking booking) {
+        ShowBookingResultDto byBookingId = userMapper.getByBookingId(booking.getBookingId());
+        byBookingId.setImgUrl(booking.getImgUrl());
+        return byBookingId;
+    }
 
 
 }
