@@ -9,6 +9,11 @@
       "name": "tumortest.jwt",
       "type": "com.tumorTest.properties.JwtProperties",
       "sourceType": "com.tumorTest.properties.JwtProperties"
+    },
+    {
+      "name": "tumortest.python",
+      "type": "com.tumorTest.properties.PythonProperties",
+      "sourceType": "com.tumorTest.properties.PythonProperties"
     }
   ],
   "properties": [
@@ -63,6 +68,21 @@
       "name": "tumortest.jwt.user-ttl",
       "type": "java.lang.Long",
       "sourceType": "com.tumorTest.properties.JwtProperties"
+    },
+    {
+      "name": "tumortest.python.img-path",
+      "type": "java.lang.String",
+      "sourceType": "com.tumorTest.properties.PythonProperties"
+    },
+    {
+      "name": "tumortest.python.result-path",
+      "type": "java.lang.String",
+      "sourceType": "com.tumorTest.properties.PythonProperties"
+    },
+    {
+      "name": "tumortest.python.start-path",
+      "type": "java.lang.String",
+      "sourceType": "com.tumorTest.properties.PythonProperties"
     }
   ],
   "hints": []

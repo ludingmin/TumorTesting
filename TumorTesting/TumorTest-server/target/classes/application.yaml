@@ -54,5 +54,8 @@ tumortest:
     admin-token-name: token
   basePath: D:\img\
 
-
+  python:
+    resultPath: ${tumortest.python.resultPath}
+    imgPath: ${tumortest.python.imgPath}
+    startPath: ${tumortest.python.startPath}
 

@@ -22,4 +22,6 @@ public class Booking {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
     private Integer state;
+
+    private String imgUrl;
 }
