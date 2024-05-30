@@ -27,7 +27,6 @@ public class CreateDoctorDto {
 
     private String address;
 
-
     private String jobtitle;
 
     private String doctorName;

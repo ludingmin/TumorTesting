@@ -75,4 +75,15 @@ public class UserController {
     }
 
 
+
+    @PostMapping("/message")
+    @ApiOperation("用户查看个人信息的接口")
+
+    public Result<User> usermessage(){
+        return userService.usermessage();
+    }
+
+
+
+
 }

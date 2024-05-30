@@ -6,4 +6,16 @@ public class RedisConstant {
     public static final int TOKEN_TIME = 60;//token的过期时间
     public static final String KEY_BOOKING_USER = "bookid" ;
 
+    public static final String KEY_BOOKING_TOTAL = "total" ;
+    public static final String KEY_BOOKING_BOOKINGID = "bookid" ;
+
+
+
+
+
+
+
+
+
+
 }

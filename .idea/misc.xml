@@ -4,6 +4,9 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/TumorTesting/pom.xml" />
+        <option value="$PROJECT_DIR$/TumorTesting/TumorTest-common/pom.xml" />
+        <option value="$PROJECT_DIR$/TumorTesting/TumorTest-pojo/pom.xml" />
+        <option value="$PROJECT_DIR$/TumorTesting/TumorTest-server/pom.xml" />
       </list>
     </option>
   </component>

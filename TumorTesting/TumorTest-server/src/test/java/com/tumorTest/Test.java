@@ -4,10 +4,14 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.digest.MD5;
 import com.tumorTest.dto.LoginDto;
 import com.tumorTest.dto.UserDto;
+import com.tumorTest.entity.Booking;
+import com.tumorTest.mapper.BookingMapper;
 import com.tumorTest.mapper.UserMapper;
 import com.tumorTest.properties.AliOssProperties;
 import com.tumorTest.result.Result;
+import com.tumorTest.service.BookingService;
 import com.tumorTest.service.UserService;
+import com.tumorTest.vo.BookingVo;
 import com.tumorTest.vo.UserVo;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +23,9 @@ import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -34,6 +40,12 @@ public class Test {
     UserService userService;
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    BookingMapper bookingMapper;
+
+    @Autowired
+    BookingService bookingService;
 
     @org.junit.Test
     public void test1() {
@@ -83,5 +95,33 @@ public class Test {
         }
     }
 
+
+
+    @org.junit.Test
+    public void test4(){
+        redisTemplate.opsForSet().add("sys","app");
+        redisTemplate.opsForSet().add("sys","a1");
+        Set<Object> sys = redisTemplate.opsForSet().members("sys");
+        System.out.println(sys);
+    }
+
+
+
+    @org.junit.Test
+    public  void test5(){
+        String doctorname="lisi";
+        Result<List<BookingVo>> doctorbooking = bookingService.doctorbooking();
+        System.out.println(doctorbooking);
+    }
+
+
+
+    @org.junit.Test
+    public  void test6(){
+        String doctorname="lisi";
+        Result<List<Booking>> listResult = bookingService.bookingselect2(doctorname);
+        System.out.println(listResult);
+
+    }
 
 }
