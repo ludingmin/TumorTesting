@@ -6,11 +6,11 @@ com\tumorTest\dto\UserDto.class
 com\tumorTest\dto\CreateDoctorDto$CreateDoctorDtoBuilder.class
 com\tumorTest\entity\Doctor$DoctorBuilder.class
 com\tumorTest\vo\LoginVo.class
-com\tumorTest\dto\CreateBookingDto.class
 com\tumorTest\vo\LoginVo$LoginVoBuilder.class
 com\tumorTest\entity\User.class
 com\tumorTest\entity\Doctor.class
-com\tumorTest\dto\CreateBookingDto$CreateBookingDtoBuilder.class
+com\tumorTest\dto\ShowBookingResultDto.class
 com\tumorTest\dto\LoginDto.class
 com\tumorTest\vo\UserVo.class
 com\tumorTest\entity\Patient.class
+com\tumorTest\vo\BookingVo.class

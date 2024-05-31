@@ -97,31 +97,31 @@ public class Test {
 
 
 
-    @org.junit.Test
-    public void test4(){
-        redisTemplate.opsForSet().add("sys","app");
-        redisTemplate.opsForSet().add("sys","a1");
-        Set<Object> sys = redisTemplate.opsForSet().members("sys");
-        System.out.println(sys);
-    }
-
-
-
-    @org.junit.Test
-    public  void test5(){
-        String doctorname="lisi";
-        Result<List<BookingVo>> doctorbooking = bookingService.doctorbooking();
-        System.out.println(doctorbooking);
-    }
-
-
-
-    @org.junit.Test
-    public  void test6(){
-        String doctorname="lisi";
-        Result<List<Booking>> listResult = bookingService.bookingselect2(doctorname);
-        System.out.println(listResult);
-
-    }
+//    @org.junit.Test
+//    public void test4(){
+//        redisTemplate.opsForSet().add("sys","app");
+//        redisTemplate.opsForSet().add("sys","a1");
+//        Set<Object> sys = redisTemplate.opsForSet().members("sys");
+//        System.out.println(sys);
+//    }
+//
+//
+//
+//    @org.junit.Test
+//    public  void test5(){
+//        String doctorname="lisi";
+//        Result<List<BookingVo>> doctorbooking = bookingService.doctorbooking();
+//        System.out.println(doctorbooking);
+//    }
+//
+//
+//
+//    @org.junit.Test
+//    public  void test6(){
+//        String doctorname="lisi";
+//        Result<List<Booking>> listResult = bookingService.bookingselect2();
+//        System.out.println(listResult);
+//
+//    }
 
 }

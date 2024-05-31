@@ -51,7 +51,8 @@
     {
       "name": "tumortest.jwt.admin-ttl",
       "type": "java.lang.Long",
-      "sourceType": "com.tumorTest.properties.JwtProperties"
+      "sourceType": "com.tumorTest.properties.JwtProperties",
+      "defaultValue": 0
     },
     {
       "name": "tumortest.jwt.user-secret-key",
@@ -67,7 +68,8 @@
     {
       "name": "tumortest.jwt.user-ttl",
       "type": "java.lang.Long",
-      "sourceType": "com.tumorTest.properties.JwtProperties"
+      "sourceType": "com.tumorTest.properties.JwtProperties",
+      "defaultValue": 0
     },
     {
       "name": "tumortest.python.img-path",

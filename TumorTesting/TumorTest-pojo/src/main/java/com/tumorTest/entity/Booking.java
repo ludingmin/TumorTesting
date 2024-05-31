@@ -14,8 +14,9 @@ import java.time.LocalTime;
 @Data
 public class Booking {
     @TableId(value = "booking_id",type = IdType.AUTO)
-    private Integer bookingId;
-    private String name;
+    private Long bookingId;
+//    private String name;
+    private Long userId;
     private String doctorName;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
