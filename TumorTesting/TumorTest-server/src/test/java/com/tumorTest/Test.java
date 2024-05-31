@@ -119,7 +119,7 @@ public class Test {
     @org.junit.Test
     public  void test6(){
         String doctorname="lisi";
-        Result<List<Booking>> listResult = bookingService.bookingselect2(doctorname);
+        Result<List<Booking>> listResult = bookingService.bookingselect2();
         System.out.println(listResult);
 
     }
