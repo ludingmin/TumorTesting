@@ -29,6 +29,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import static com.tumorTest.context.BaseContext.getUser;
+
 
 @Service
 public class UserServiceImp extends ServiceImpl<UserMapper, User> implements UserService {
@@ -107,10 +109,18 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
      * @param userId 用户的id
      * @return
      */
-    @Override
-    public User findPersonalInformation(@Param("userId") Integer userId) {
+    public User findPersonalInformation(Integer userId) {
         User personalInformationByUserId = userMapper.getPersonalInformationByUserId(userId);
         return personalInformationByUserId;
+    }
+
+
+    @Override
+    public Result<User> usermessage() {
+        UserDto user = getUser();
+        Long id = user.getId();
+        User user1 = userMapper.selectById(id);
+        return Result.success(user1);
     }
 
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/TumorTesting/pom.xml" />
+        <option value="$PROJECT_DIR$/TumorTesting/TumorTest-common/pom.xml" />
+        <option value="$PROJECT_DIR$/TumorTesting/TumorTest-pojo/pom.xml" />
+        <option value="$PROJECT_DIR$/TumorTesting/TumorTest-server/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK" />
+</project>
