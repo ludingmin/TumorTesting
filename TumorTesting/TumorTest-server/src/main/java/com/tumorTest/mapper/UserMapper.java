@@ -18,7 +18,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     @Select("select * from consultation where booking_id = #{bookingId}")
-    ShowBookingResultDto getByBookingId(Integer bookingId);
+    ShowBookingResultDto getByBookingId(Long bookingId);
 
     /**
      * 根据用户id查询个人信息

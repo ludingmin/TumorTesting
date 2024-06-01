@@ -76,14 +76,14 @@ public class UserController {
 
     @PostMapping("/findPersonalInformation")
     @ApiOperation("用户查询个人信息")
-    public Result findPersonalInformation(@Param("userId") Integer userId){
+    public Result<User> findPersonalInformation(@Param("userId") Integer userId){
         User personalInformation = userService.findPersonalInformation(userId);
         return Result.success(personalInformation);
     }
 
     @PostMapping("/selectByBooking")
     @ApiOperation("用户查询自己的预约结果")
-    public Result findUserBooking(@RequestBody Booking booking){
+    public Result<ShowBookingResultDto> findUserBooking(@RequestBody Booking booking){
         ShowBookingResultDto showBookingResultDto = userService.selectBooking(booking);
         return Result.success(showBookingResultDto);
     }
@@ -92,7 +92,6 @@ public class UserController {
 
     @PostMapping("/message")
     @ApiOperation("用户查看个人信息的接口")
-
     public Result<User> usermessage(){
         return userService.usermessage();
     }
