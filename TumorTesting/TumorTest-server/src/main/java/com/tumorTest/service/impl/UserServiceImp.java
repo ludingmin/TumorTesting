@@ -111,6 +111,7 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
      */
     public User findPersonalInformation(Integer userId) {
         User personalInformationByUserId = userMapper.getPersonalInformationByUserId(userId);
+        personalInformationByUserId.setPassword("****");
         return personalInformationByUserId;
     }
 
