@@ -19,6 +19,17 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
+//      对swagger访问路径放行
+        String requestURI = request.getRequestURI();
+        // 指定需要放行的路径
+        String[] allowedPaths = new String[]{"/doc.html","/webjars/","/swagger-resources", "/v2/api-docs"};
+
+        for (String allowedPath : allowedPaths) {
+            if (requestURI.startsWith(allowedPath)) {
+                return true; // 放行
+            }
+        }
+
 
         UserDto user = BaseContext.getUser();
         if (user == null) {

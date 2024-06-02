@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class DoctorServiceImp extends ServiceImpl<DoctorMapper, Doctor> implements DoctorService {
@@ -52,6 +53,15 @@ public class DoctorServiceImp extends ServiceImpl<DoctorMapper, Doctor> implemen
                 .onboardingTime(new Date()).jobtitle(doctorDto.getJobtitle()).build();
         doctorMapper.insert(doctor);
         return Result.success("创建成功!");
+    }
+
+    /**
+     * 查询所有医生
+     * @return
+     */
+    public List<Doctor> selectAllDoctor() {
+        List<Doctor> doctorList = doctorMapper.selectAll();
+        return doctorList;
     }
 
 

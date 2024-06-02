@@ -15,10 +15,14 @@ import java.time.LocalTime;
 public class Booking {
     @TableId(value = "booking_id",type = IdType.AUTO)
     private Long bookingId;
+//    private String name;
     private Long userId;
     private String doctorName;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate date;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
     private Integer state;
+
     private String imgUrl;
 }

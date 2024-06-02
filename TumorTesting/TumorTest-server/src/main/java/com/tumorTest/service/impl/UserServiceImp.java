@@ -4,6 +4,9 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.digest.MD5;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.tumorTest.dto.ShowBookingResultDto;
+import com.tumorTest.entity.Booking;
+import com.tumorTest.mapper.BookingMapper;
 import com.tumorTest.uitl.CommonUtil;
 import com.tumorTest.constant.RedisConstant;
 import com.tumorTest.dto.CreateUseDto;
@@ -17,6 +20,7 @@ import com.tumorTest.mapper.UserMapper;
 import com.tumorTest.result.Result;
 import com.tumorTest.service.UserService;
 import com.tumorTest.vo.UserVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -36,6 +40,9 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
     RedisTemplate<String,Object>  redisTemplate;
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    BookingMapper bookingMapper;
 
 
     public Result<UserVo> userLogin(LoginDto loginDto) {
@@ -91,6 +98,33 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
 
     }
 
+    /**
+     * 用户根据预约信息查询结果
+     * @param bookingId 预约的信息
+     */
+    public ShowBookingResultDto selectBooking(Long bookingId) {
+
+        ShowBookingResultDto byBookingId = userMapper.getByBookingId(bookingId);
+        if(byBookingId == null){
+            return null;
+        }
+        String imgUrl = bookingMapper.selectImgUrl(bookingId);
+        byBookingId.setImgUrl(imgUrl);
+        return byBookingId;
+    }
+
+    /**
+     * 用户根据userId查询个人信息
+     * @param userId 用户的id
+     * @return
+     */
+    public User findPersonalInformation(Integer userId) {
+        User personalInformationByUserId = userMapper.getPersonalInformationByUserId(userId);
+        personalInformationByUserId.setPassword("****");
+        return personalInformationByUserId;
+    }
+
+
     @Override
     public Result<UserDto> usermessage() {
         UserDto user = getUser();
@@ -98,5 +132,6 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
        // User user1 = userMapper.selectById(id);
         return Result.success(user);
     }
+
 
 }

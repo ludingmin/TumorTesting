@@ -4,7 +4,8 @@ package com.tumorTest.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.tumorTest.dto.CreateUseDto;
 import com.tumorTest.dto.LoginDto;
-import com.tumorTest.dto.UserDto;
+import com.tumorTest.dto.ShowBookingResultDto;
+import com.tumorTest.entity.Booking;
 import com.tumorTest.entity.User;
 import com.tumorTest.result.Result;
 import com.tumorTest.vo.UserVo;
@@ -17,5 +18,9 @@ public interface UserService extends IService<User> {
 
     Result  createUser(CreateUseDto createUseDto);
 
-    Result<UserDto> usermessage();
+    ShowBookingResultDto selectBooking(Long bookingId);
+
+    User findPersonalInformation(Integer userId);
+
+    Result<User> usermessage();
 }

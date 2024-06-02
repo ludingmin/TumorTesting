@@ -1,12 +1,12 @@
 package com.tumorTest.config;
 
-import com.tumorTest.properties.AliOssProperties;
+
 import com.tumorTest.uitl.AliOssUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-
+import com.tumorTest.properties.AliOssProperties;
 @Configuration
 public class AliOssUtilBuild {
     @Autowired

@@ -23,4 +23,10 @@ public interface BookingMapper extends BaseMapper<Booking> {
 
     @Select("SELECT user.id,user.name,user.address,user.number,booking.booking_id from user,booking where doctor_name= #{doctorname} AND booking.state=0 AND booking.user_id=user.id AND booking.time BETWEEN #{date1} and #{date2}")
     public List<BookingVo> joinselect(@Param("doctorname") String doctorname , @Param("date1")LocalDateTime date1, @Param("date2") LocalDateTime date2);
+
+    @Select("select booking_id from booking where user_id = #{userId}")
+    public Long selectBookingIdIntegerByUserId(Long userId);
+
+    @Select("select img_url from booking where booking_id = #{bookingId}")
+    String selectImgUrl(Long bookingId);
 }
