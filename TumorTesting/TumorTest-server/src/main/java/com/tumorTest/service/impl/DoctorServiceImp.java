@@ -64,5 +64,14 @@ public class DoctorServiceImp extends ServiceImpl<DoctorMapper, Doctor> implemen
         return doctorList;
     }
 
+    @Override
+    public Result writeContent(Integer consultationId, String content) {
+        Integer flag = doctorMapper.updateContent(consultationId, content);
+        if(flag == 0){
+            return Result.error("评语失败");
+        }
+        return Result.success("评语成功");
+    }
+
 
 }
