@@ -82,9 +82,14 @@ public class UserController {
     }
 
     @PostMapping("/selectByBooking")
-    @ApiOperation("用户查询自己的预约结果")
-    public Result<ShowBookingResultDto> findUserBooking(@RequestBody Booking booking){
-        ShowBookingResultDto showBookingResultDto = userService.selectBooking(booking);
+    @ApiOperation("用户查询自己的检测结果")
+    public Result<ShowBookingResultDto> findUserBooking(Long bookingId){
+        ShowBookingResultDto showBookingResultDto = userService.selectBooking(bookingId);
+
+        if(showBookingResultDto == null){
+            return Result.error("没有该预约单号");
+        }
+
         return Result.success(showBookingResultDto);
     }
 

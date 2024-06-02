@@ -26,4 +26,7 @@ public interface BookingMapper extends BaseMapper<Booking> {
 
     @Select("select booking_id from booking where user_id = #{userId}")
     public Long selectBookingIdIntegerByUserId(Long userId);
+
+    @Select("select img_url from booking where booking_id = #{bookingId}")
+    String selectImgUrl(Long bookingId);
 }

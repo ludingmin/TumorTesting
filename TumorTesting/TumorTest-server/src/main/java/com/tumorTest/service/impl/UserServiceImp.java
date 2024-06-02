@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.tumorTest.dto.ShowBookingResultDto;
 import com.tumorTest.entity.Booking;
+import com.tumorTest.mapper.BookingMapper;
 import com.tumorTest.uitl.CommonUtil;
 import com.tumorTest.constant.RedisConstant;
 import com.tumorTest.dto.CreateUseDto;
@@ -39,6 +40,9 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
     RedisTemplate<String,Object>  redisTemplate;
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    BookingMapper bookingMapper;
 
 
     public Result<UserVo> userLogin(LoginDto loginDto) {
@@ -96,11 +100,16 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
 
     /**
      * 用户根据预约信息查询结果
-     * @param booking 预约的信息
+     * @param bookingId 预约的信息
      */
-    public ShowBookingResultDto selectBooking(Booking booking) {
-        ShowBookingResultDto byBookingId = userMapper.getByBookingId(booking.getBookingId());
-        byBookingId.setImgUrl(booking.getImgUrl());
+    public ShowBookingResultDto selectBooking(Long bookingId) {
+
+        ShowBookingResultDto byBookingId = userMapper.getByBookingId(bookingId);
+        if(byBookingId == null){
+            return null;
+        }
+        String imgUrl = bookingMapper.selectImgUrl(bookingId);
+        byBookingId.setImgUrl(imgUrl);
         return byBookingId;
     }
 
