@@ -18,8 +18,6 @@ public class Booking {
 //    private String name;
     private Long userId;
     private String doctorName;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate date;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
     private Integer state;

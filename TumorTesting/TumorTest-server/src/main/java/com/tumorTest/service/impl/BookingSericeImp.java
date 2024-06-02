@@ -10,7 +10,9 @@ import com.tumorTest.entity.Booking;
 import com.tumorTest.mapper.BookingMapper;
 import com.tumorTest.result.Result;
 import com.tumorTest.service.BookingService;
+import com.tumorTest.vo.BookHistory;
 import com.tumorTest.vo.BookingVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -18,9 +20,11 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static com.tumorTest.constant.RedisConstant.KEY_BOOKING_TOTAL;
 import static com.tumorTest.context.BaseContext.getUser;
@@ -146,7 +150,7 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
 
 //    用户查询自己的历史预约信息
     @Override
-    public Result<List<Booking>> bookingselect1() {
+    public Result bookingselect1() {
         //获取该用户的信息
         UserDto user = getUser();
         //获取用户名
@@ -155,19 +159,34 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
         QueryWrapper<Booking> bookingQueryWrapper = new QueryWrapper<>();
         bookingQueryWrapper.eq("user_id",id);
         List<Booking> bookings = bookingMapper.selectList(bookingQueryWrapper);
-        return Result.success(bookings);
+        Set<Object> collect = bookings.stream().map(booking -> BookHistory.builder().bookingId(booking.getBookingId())
+                .userId(booking.getUserId())
+                .time(booking.getTime().toString())
+                .doctorName(booking.getDoctorName())
+                .state(booking.getState())
+                .build()
+        ).collect(Collectors.toSet());
+        return Result.success(collect);
     }
 
 
     //医生查看自己的历史被预约信息
     @Override
-    public Result<List<Booking>> bookingselect2() {
+    public Result bookingselect2() {
         UserDto user = getUser();
         String name1 = user.getName();
         QueryWrapper<Booking> bookingQueryWrapper = new QueryWrapper<>();
         bookingQueryWrapper.eq("doctor_name",name1).eq("state",0);
         List<Booking> bookings = bookingMapper.selectList(bookingQueryWrapper);
-        return Result.success(bookings);
+
+        Set<Object> collect = bookings.stream().map(booking -> BookHistory.builder().bookingId(booking.getBookingId())
+                .userId(booking.getUserId())
+                .time(booking.getTime().toString())
+                .doctorName(booking.getDoctorName())
+                .state(booking.getState())
+                .build()
+        ).collect(Collectors.toSet());
+        return Result.success(collect);
 
     }
 
@@ -197,7 +216,6 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
         //查询
         List<BookingVo> joinselect = bookingMapper.joinselect(doctorname,startOfDay,dateTime);
         return Result.success(joinselect);
-
     }
 
 

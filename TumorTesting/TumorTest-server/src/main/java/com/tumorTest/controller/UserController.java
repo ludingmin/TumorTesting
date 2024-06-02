@@ -51,6 +51,7 @@ public class UserController {
     @PostMapping("/login")
     @ApiOperation("用户登录接口")
     public Result<UserVo> login(@RequestBody LoginDto loginDto){
+        System.out.println(1);
 
         log.info("用户登录:{}",loginDto);
         return userService.userLogin(loginDto);
@@ -97,7 +98,7 @@ public class UserController {
 
     @PostMapping("/message")
     @ApiOperation("用户查看个人信息的接口")
-    public Result<User> usermessage(){
+    public Result<UserDto> usermessage(){
         return userService.usermessage();
     }
 
