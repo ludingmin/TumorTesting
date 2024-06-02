@@ -25,6 +25,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 import java.util.UUID;
@@ -45,7 +46,7 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
     BookingMapper bookingMapper;
 
 
-    public Result<UserVo> userLogin(LoginDto loginDto) {
+    public Result<UserVo> userLogin( LoginDto loginDto) {
 
         // 根据DTO查询数据库
         User user = userMapper.selectOne(new QueryWrapper<User>().eq("name", loginDto.getUsername()));

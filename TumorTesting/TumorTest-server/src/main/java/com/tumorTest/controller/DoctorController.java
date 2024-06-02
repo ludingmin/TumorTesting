@@ -29,11 +29,23 @@ public class DoctorController {
     @Autowired
     FileService fileService;
 
+
     @PostMapping("/create")
     public Result createDoctor( CreateDoctorDto createDoctorDto){
         return doctorService.createDoctor(createDoctorDto);
     }
 
+    /**
+     *
+     * @param consultationId
+     * @param content
+     * @return
+     */
+    @ApiOperation("医生写评语")
+    @PostMapping("/writeContent")
+    public Result writeContent(Integer consultationId,String content){
+        return doctorService.writeContent(consultationId,content);
+    }
 
     @PostMapping("/reload")
     @ApiOperation("文件上传接口")
