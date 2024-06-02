@@ -71,7 +71,7 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
         //查询今日是否已预约
         Long add = redisTemplate.opsForSet().add(format, id);
         if (add==0)
-            return Result.success("今天已预约");
+            return Result.error("今天已预约");
         Booking booking = new Booking();
         //封装属性
         booking.setUserId(id);
@@ -81,12 +81,13 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
         booking.setState(0);
         int insert = bookingMapper.insert(booking);
         //添加数据库失败或者今日预约则失败
-        if (insert==0)
-            return Result.success("预约失败");
+        if (insert==0) {
+            redisTemplate.opsForSet().remove(format,id);
+            return Result.error("预约失败");
 
+        }
         Long bookingId = booking.getBookingId();
         System.out.println(bookingId);
-
         redisTemplate.opsForSet().add(RedisConstant.KEY_BOOKING_BOOKINGID,bookingId);
         //更新redis
         Integer total1 = (Integer) redisTemplate.opsForValue().get(RedisConstant.KEY_BOOKING_TOTAL);
@@ -127,8 +128,9 @@ public class BookingSericeImp extends ServiceImpl<BookingMapper, Booking> implem
         booking.setState(-1);
         //修改数据库里面的该用户的数据
         int i = bookingMapper.updateById(booking);
-        if(i==0)
-            return Result.success("取消失败");
+        if(i==0) {
+            return Result.error("取消失败");
+        }
         //将预约人数加一
         Integer total1 = (Integer) redisTemplate.opsForValue().get("total");
         total1++;

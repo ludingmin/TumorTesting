@@ -92,11 +92,11 @@ public class UserServiceImp extends ServiceImpl<UserMapper, User> implements Use
     }
 
     @Override
-    public Result<User> usermessage() {
+    public Result<UserDto> usermessage() {
         UserDto user = getUser();
         Long id = user.getId();
-        User user1 = userMapper.selectById(id);
-        return Result.success(user1);
+       // User user1 = userMapper.selectById(id);
+        return Result.success(user);
     }
 
 }
